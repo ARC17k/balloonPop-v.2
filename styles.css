@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box ;
+    cursor: none;
+}
+
+body{
+    background-image: url(assets/sky.png);
+    background-size: 800px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+}
+
+#balloon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* background-color: red; */
+    position: absolute;
+    bottom: 165px;
+    right: 183px;
+    z-index: -1;
+
+    transform-origin: bottom center;
+    scale: .2;
+}
+
+#balloon::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    translate: -50%;
+    width: 50%;
+    height: 50%;
+    background-image: var(--alpha-image);
+    background-size: var(--alpha-size);
+    opacity: .8;
+}
+
+#balloon.active::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url(assets/thread.png);
+    top: 58px;
+    left: 0px;
+}
+
+#score{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    font-family: "Comic Neue", cursive;
+    font-size: 5rem;
+    font-weight: bolder;
+    color: crimson;
+    -webkit-text-stroke: 2px black;
+    z-index: 1;
+}
+
+#cursor{
+    top: -100px;
+    border-radius: 50%;
+    margin: 3px;
+    height: 15px;
+    width: 15px;
+
+    position: absolute;
+    border: 1px solid white;
+    z-index: 1;
+    mix-blend-mode: difference;
+    transition: .2s ease;
+}
+
+#cursor::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 35px;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    background-color: white;
+}
+#cursor::before{
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 1px;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    background-color: white;
+}
+
+
+
+#pump-container{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    transition: .3 ease;
+}
+#pump-container.pressed{
+    transform-origin: bottom;
+    scale: 1 .98;
+}
+
+#pump-container #body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#body #handle{
+    background-image: url(assets/pump/handle.png);
+    background-size: cover;
+    height: 80px;
+    width: 80px;
+    position: relative;
+    z-index: -1;
+    transition: transform .3s ease;
+}
+#body #handle.pressed{
+    transform: translateY(50px);
+}
+#body #cylinder{
+    width: 140px;
+    height: 152px;
+    background-image: url(assets/pump/body.png);
+    background-size: cover;
+}
+
+#pump-container #outlet{
+    width: 90px;
+    height: 95px;
+    background-image: url(assets/pump/outlet.png);
+    background-size: cover;
+}
